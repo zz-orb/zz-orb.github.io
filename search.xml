@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title></title>
+      <link href="/2023/11/06/oopre-ke-cheng-zong-jie-fan-si/"/>
+      <url>/2023/11/06/oopre-ke-cheng-zong-jie-fan-si/</url>
+      
+        <content type="html"><![CDATA[<h3 id="oopre课程总结反思"><a href="#oopre课程总结反思" class="headerlink" title="oopre课程总结反思"></a>oopre课程总结反思</h3><h4 id="最终架构设计"><a href="#最终架构设计" class="headerlink" title="最终架构设计"></a>最终架构设计</h4><p>######价值体</p><p><img src="/oopre%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93%E5%8F%8D%E6%80%9D.assets/Adventurer-1699240454037-7.png"></p><p>这一部分类所实例化的对象是完成需求需要处理的重头戏。</p><p><code>Bottle</code>类、<code>Food</code>类、<code>Equipment</code>类的属性均只是设有其基本属性及方法。<code>Adventurer</code>类除基础属性之外，为满足需求，还包括了与前三者相关的属性（一个名为xx的HashMap表示所拥有的及一个名为xxBackpack的HashMap表示所携带的  xx为bottle、food、equipment），以及名为laborers的HashMap表示所雇佣的冒险者。</p><p><strong>待改进之处</strong>：学习优秀代码之后发现，确实把与Backpack相关的属性方法从<code>Adventurer</code>类中抽离出来会更好一些。一方面<code>Adventurer</code>类中方法会大幅减少，功能形式会更接近其他价值体，另一方面代码总体架构也会更为清晰明了。</p><h6 id="非价值体"><a href="#非价值体" class="headerlink" title="非价值体"></a>非价值体</h6><p><img src="/oopre%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93%E5%8F%8D%E6%80%9D.assets/Adventurer-1699240297390-5.png" alt="Adventurer"></p><p>这一部分类所实例化的对象更多的是为了辅助价值体实现需求。</p><p><code>FightLog</code>类记录每条战斗日志，<code>FightMode</code>类执行战斗日志，<code>Input</code>类中logGeneral与modeGeneral用来分别储存所有的前两者的记录。<code>Shop</code>类完成所有的冒险者与商店之间的交互。</p><p><strong>待改进之处</strong>：编写之时只是为了方便将logGeneral、modeGeneral、teamById、teamByName放在<code>Main</code>函数并传入<code>Input</code>类中作为其属性，但并没有实际的含义。在优秀代码中看到了一份应用单例模式构造一个新的<code>World</code>类的代码，我的这些确实作为只能实例化一次的游戏世界的属性会更为合理更有意义一些。</p><h6 id="历次迭代的架构调整"><a href="#历次迭代的架构调整" class="headerlink" title="历次迭代的架构调整"></a>历次迭代的架构调整</h6><p>hw2-&gt;hw3：将<code>Main</code>函数中的对不同指令的处理抽离到一个<code>Input</code>类中</p><p>hw3-&gt;hw4：增加<code>FightLog</code>类和<code>FightMode</code>类，前者用来记录战斗日志，后者用来执行日志</p><p>hw4-&gt;hw6：实现<code>Bottle</code>类和<code>Equipment</code>类的继承，及<code>Community</code>接口</p><p>hw6-&gt;hw7：在<code>Shop</code>类中实现单例模式</p><h4 id="关于Junit"><a href="#关于Junit" class="headerlink" title="关于Junit"></a>关于Junit</h4><p>值得肯定的是，编写的Junit确实帮助我找到了不少的bug，得益于它更加独立分块的单元测试和自行构造的十分简单的数据，往往十分有助于发现问题所在。</p><p>但是，更多的Junit的编写是为了通过评测机的要求，而且一般Junit的编写是一个十分让人破防的事情👉👈。并且我从控制台输入的指令写导Junit里面真的实现很不优雅(敲打)</p><h4 id="oopre学习心得体会"><a href="#oopre学习心得体会" class="headerlink" title="oopre学习心得体会"></a>oopre学习心得体会</h4><p>第一次接触面向对象编程，我最最最直观的体会主要有以下几点：</p><ol><li>它相较于面向过程要求我们有更为清晰的代码结构。从每个类中方法的构造、对实例化对象的管理，到类与类之间的继承、接口的实现，都需要仔细的考量。因而每次完成作业总要呆呆对着电脑想很久…</li><li>它要求我们每一次的迭代要“留有余地”。迭代式的作业，除了每次实现需求之外，需要合理地估计需求易变性，尽可能地让后续的操作优雅，否则很快就会迎来代码重构(×  然而，面对特定的实现目的，代码重构有时是不可避免的。适时的代码框架的修改能够改善程序的设计复杂性， 使得代码更容易理解 。</li><li>它把代码组织成类和对象的形式，每个类都有自己的属性和方法，使得代码更加模块化和可维护，同时所描述的关系和行为也更为贴近实际问题。</li></ol><h4 id="对oopre课程简单建议"><a href="#对oopre课程简单建议" class="headerlink" title="对oopre课程简单建议"></a>对oopre课程简单建议</h4><p>总体课程体验还是相当棒的，但是美中不足的一点是个人感觉还没有完全领会到应用设计模式真正的有益之处(很有可能是因为没有完全理解)，或许下次的oopre课程作业可以在这方面有更多的应用，通过实实在在的代码编写领会设计模式。</p><p>####再次感谢吴际老师和助教老师们帮助Java小白迈出了面向对象的第一步 \庆祝/\庆祝/</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/10/13/hello-world/"/>
+      <url>/2023/10/13/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
