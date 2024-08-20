@@ -226,10 +226,9 @@
     <style type="text/css">
     /* don't remove. */
     .about-cover {
-        height: 75vh;
+        height: 90.2vh;
     }
 </style>
-
 <div class="bg-cover pd-header about-cover">
     <div class="container">
         <div class="row">
@@ -247,10 +246,13 @@
     </div>
 </div>
 
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</script>
+
+    <script>
+        // 每天切换 banner 图.  Switch banner image every day.
+        var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+        $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    </script>
+
 
 
     <footer class="page-footer bg-color">
@@ -458,8 +460,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
