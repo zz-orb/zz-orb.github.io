@@ -580,10 +580,13 @@ CLINT -----------------&gt;+---------------------------+-------0x0200 0000
                         |       invalid memory      |
 0 ---------------------&gt;+---------------------------+-------0x0000 0000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="U-Mode用户地址空间布局"><a href="#U-Mode用户地址空间布局" class="headerlink" title="U-Mode用户地址空间布局"></a>U-Mode用户地址空间布局</h5><p><img src="/./img/lab2-Umode.png"></p>
+<h5 id="U-Mode用户地址空间布局"><a href="#U-Mode用户地址空间布局" class="headerlink" title="U-Mode用户地址空间布局"></a>U-Mode用户地址空间布局</h5><img src="/2024/08/22/2024-os-lab2/lab2-Umode.png" style="zoom:50%;">
+
 <h4 id="虚拟页式管理（Sv39内存布局）"><a href="#虚拟页式管理（Sv39内存布局）" class="headerlink" title="虚拟页式管理（Sv39内存布局）"></a>虚拟页式管理（Sv39内存布局）</h4><h5 id="39位有效VA"><a href="#39位有效VA" class="headerlink" title="39位有效VA"></a>39位有效VA</h5><p>根据SV-39的约定，对于一个64位的虚拟地址，只使用其低39位来进行地址转换，而高25位不做使用，未来Risc-V有可能用来定义更多的翻译级别。</p>
-<aside> 💡 因此该布局下最大的虚拟地址即为(1&lt;&lt;39)-1，也就是0x7f ffff <h5 id="三级页表机制"><a href="#三级页表机制" class="headerlink" title="三级页表机制"></a>三级页表机制<p>Sv39为页式的内存管理，每一页的大小为4kb，即4096bytes。采用三级页表来完成虚拟地址到物理地址的映射。</p>
-</h5><h5 id="satp寄存器"><a href="#satp寄存器" class="headerlink" title="satp寄存器"></a>satp寄存器</h5><p>satp(Supervisor Address Translation and Protection)寄存器是Risc-V架构下的一个特权寄存器，用来告知cpu根页表的地址，其具体布局如下</p>
+<aside> 💡 因此该布局下最大的虚拟地址即为(1&lt;&lt;39)-1，也就是0x7f ffff ffff
+
+<h5 id="三级页表机制"><a href="#三级页表机制" class="headerlink" title="三级页表机制"></a>三级页表机制</h5><p>Sv39为页式的内存管理，每一页的大小为4kb，即4096bytes。采用三级页表来完成虚拟地址到物理地址的映射。</p>
+<h5 id="satp寄存器"><a href="#satp寄存器" class="headerlink" title="satp寄存器"></a>satp寄存器</h5><p>satp(Supervisor Address Translation and Protection)寄存器是Risc-V架构下的一个特权寄存器，用来告知cpu根页表的地址，其具体布局如下</p>
 <table>
 <thead>
 <tr>
@@ -604,7 +607,8 @@ CLINT -----------------&gt;+---------------------------+-------0x0200 0000
 <li>ppn为页表基地址的物理页号，由于一页大小为4kb，因此即为页表的物理地址右移12位即可</li>
 </ul>
 <h5 id="虚拟地址和物理地址"><a href="#虚拟地址和物理地址" class="headerlink" title="虚拟地址和物理地址"></a>虚拟地址和物理地址</h5><p>Sv-39的虚拟地址和物理地址格式如下</p>
-<p><img src="/./img/lab2-risc-v-va-pa.png"></p>
+<img src="/2024/08/22/2024-os-lab2/lab2-risc-v-va-pa.png">
+
 <p>对于一个虚拟地址而言，VPN[2]为第一级页号，查询过程如下：</p>
 <ul>
 <li>satp寄存器存储了根页表的物理地址，将根页表的物理地址加上页表项大小（8bytes）*第一级页号即可找到其对应表项。</li>
@@ -612,8 +616,10 @@ CLINT -----------------&gt;+---------------------------+-------0x0200 0000
 <li>由此获得了第二级页表的基地址（页号左移12位），此时再用VPN[1]去查询第三级页表的基地址即可。</li>
 <li>如此获得第三级页表项，其存储的页号即为最终对应的物理页号，将其左移12位再加上page offset，就得到了对应的物理地址</li>
 </ul>
-<p><img src="/./img/lab2-va2pa.png"></p>
-<h6 id="页表项的标记位"><a href="#页表项的标记位" class="headerlink" title="页表项的标记位"></a>页表项的标记位</h6><p><img src="/./img/lab2-%E9%A1%B5%E8%A1%A8%E9%A1%B9%E6%A0%87%E8%AE%B0%E4%BD%8D.png"></p>
+<img src="/2024/08/22/2024-os-lab2/lab2-va2pa.png">
+
+<h6 id="页表项的标记位"><a href="#页表项的标记位" class="headerlink" title="页表项的标记位"></a>页表项的标记位</h6><img src="/2024/08/22/2024-os-lab2/lab2-%E9%A1%B5%E8%A1%A8%E9%A1%B9%E6%A0%87%E8%AE%B0%E4%BD%8D.png">
+
 <p>上述过程已经可以查询到对应的物理地址，但页表项中的标记位也携带了一些额外的信息，下面加以解释</p>
 <ul>
 <li>RSW: Reserved for use by Supervisor softWare</li>
@@ -648,7 +654,8 @@ CLINT -----------------&gt;+---------------------------+-------0x0200 0000
 </ul>
 <p>实际上位于任何级的 PTE 都可能成为叶 PTE，也就是不通过三级页表映射就查询到一个物理地址（RX非0）。非最低级的 PTE 作为叶 PTE 时则会形成超级页。</p>
 <p>例如，如果第一级页表所查询到的页表项的R位或X位非0，则页表项中的PPN[2]即为物理地址的页号，而此时其一页的大小也对应的为$2^{12+9+9}=2^{30}$bits（此时PPN[1]和PPN[0]都为0，否则抛出异常），也就是1GB，这就是一个超级页。因此Sv-39下页的大小可能为4Kb，2Mb和1Gb。</p>
-<p><img src="/./img/lab2-RXW.png"></p>
+<img src="/2024/08/22/2024-os-lab2/lab2-RXW.png">
+
 <h2 id="难点分析"><a href="#难点分析" class="headerlink" title="难点分析"></a>难点分析</h2><h3 id="0-预备知识"><a href="#0-预备知识" class="headerlink" title="0.预备知识"></a>0.预备知识</h3><p>在  include/pmap.h 、 include/mmu.h 中： </p>
 <ul>
 <li>PDX(va) ：页目录偏移量（查找遍历页表时常用） </li>
@@ -781,7 +788,7 @@ Pte <span class="token operator">*</span>pte<span class="token punctuation">;</s
 <li><a target="_blank" rel="noopener" href="https://yanna-zy.gitee.io/2023/04/10/BUAA-OS-2/#post-comment">https://yanna-zy.gitee.io/2023/04/10/BUAA-OS-2/#post-comment</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/626899526">RISC-V Sv39 虚拟内存总结 - 知乎 (zhihu.com)</a></li>
 </ol>
-<!--39)-1，也就是0x7f--></aside>
+</aside>
                 
             </div>
             <hr/>
