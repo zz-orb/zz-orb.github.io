@@ -403,12 +403,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="oopre课程总结反思"><a href="#oopre课程总结反思" class="headerlink" title="oopre课程总结反思"></a>oopre课程总结反思</h3><h4 id="最终架构设计"><a href="#最终架构设计" class="headerlink" title="最终架构设计"></a>最终架构设计</h4><h6 id="价值体"><a href="#价值体" class="headerlink" title="价值体"></a>价值体</h6><img src="/2024/08/21/oopre-ke-cheng-zong-jie-fan-si/1.jpeg" class>
+                <h3 id="oopre课程总结反思"><a href="#oopre课程总结反思" class="headerlink" title="oopre课程总结反思"></a>oopre课程总结反思</h3><h4 id="最终架构设计"><a href="#最终架构设计" class="headerlink" title="最终架构设计"></a>最终架构设计</h4><h6 id="价值体"><a href="#价值体" class="headerlink" title="价值体"></a>价值体</h6><img src="/2024/08/21/oopre-ke-cheng-zong-jie-fan-si/1.jpeg" class="">
 
 <p>这一部分类所实例化的对象是完成需求需要处理的重头戏。</p>
 <p><code>Bottle</code>类、<code>Food</code>类、<code>Equipment</code>类的属性均只是设有其基本属性及方法。<code>Adventurer</code>类除基础属性之外，为满足需求，还包括了与前三者相关的属性（一个名为xx的HashMap表示所拥有的及一个名为xxBackpack的HashMap表示所携带的  xx为bottle、food、equipment），以及名为laborers的HashMap表示所雇佣的冒险者。</p>
 <p><strong>待改进之处</strong>：学习优秀代码之后发现，确实把与Backpack相关的属性方法从<code>Adventurer</code>类中抽离出来会更好一些。一方面<code>Adventurer</code>类中方法会大幅减少，功能形式会更接近其他价值体，另一方面代码总体架构也会更为清晰明了。</p>
-<h6 id="非价值体"><a href="#非价值体" class="headerlink" title="非价值体"></a>非价值体</h6><img src="/2024/08/21/oopre-ke-cheng-zong-jie-fan-si/2.png" class>
+<h6 id="非价值体"><a href="#非价值体" class="headerlink" title="非价值体"></a>非价值体</h6><img src="/2024/08/21/oopre-ke-cheng-zong-jie-fan-si/2.png" class="">
 
 <p>这一部分类所实例化的对象更多的是为了辅助价值体实现需求。</p>
 <p><code>FightLog</code>类记录每条战斗日志，<code>FightMode</code>类执行战斗日志，<code>Input</code>类中logGeneral与modeGeneral用来分别储存所有的前两者的记录。<code>Shop</code>类完成所有的冒险者与商店之间的交互。</p>
