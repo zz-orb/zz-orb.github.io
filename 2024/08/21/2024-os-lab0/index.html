@@ -404,7 +404,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="lab0"><a href="#lab0" class="headerlink" title="lab0"></a>lab0</h1><h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="Thinking-0-1"><a href="#Thinking-0-1" class="headerlink" title="Thinking 0.1"></a>Thinking 0.1</h3><p>使用add命令之前，README.txt处于<code>Untracked</code>(未跟踪的文件)；使用add命令之后，README.txt处于<code>Staged</code>(要提交的变更)；提交README.txt之后，其处于<code>Unmodified</code>；修改README.txt之后，其处于<code>Modified</code>(尚未暂存以备提交的变更)。故Modified.txt和Untracked.txt中status并不相同。</p>
-<h3 id="Thinking-0-2"><a href="#Thinking-0-2" class="headerlink" title="Thinking 0.2"></a>Thinking 0.2</h3><p><img src="/2024-OS-lab0/img/Thinking%200.2.png"><br>add the file: <code>git add</code></p>
+<h3 id="Thinking-0-2"><a href="#Thinking-0-2" class="headerlink" title="Thinking 0.2"></a>Thinking 0.2</h3><img src="/2024/08/21/2024-os-lab0/img/Thinking%200.2.png">
+
+<p>add the file: <code>git add</code></p>
 <p>stage the file: <code>git add</code></p>
 <p>commit: <code>git commit</code></p>
 <h3 id="Thinking-0-3"><a href="#Thinking-0-3" class="headerlink" title="Thinking 0.3"></a>Thinking 0.3</h3><ol>
@@ -418,9 +420,11 @@
 <p><code>git rm hello.txt</code> 直接从暂存区删除文件，工作区不会做出改变</p>
 </li>
 </ol>
-<h3 id="Thinking-0-4"><a href="#Thinking-0-4" class="headerlink" title="Thinking 0.4"></a>Thinking 0.4</h3><p>提交三个版本之后：<br><img src="/2024-OS-lab0/img/Thinking%200.4-1.png"></p>
-<p>回退版本二：<br><img src="/2024-OS-lab0/img/Thinking%200.4-2.png"></p>
-<p>通过hashcode回到版本三：<br><img src="/2024-OS-lab0/img/Thinking%200.4-3.png"></p>
+<h3 id="Thinking-0-4"><a href="#Thinking-0-4" class="headerlink" title="Thinking 0.4"></a>Thinking 0.4</h3><p>提交三个版本之后：</p>
+<img src="/2024/08/21/2024-os-lab0/img/Thinking%200.4-1.png" style="zoom:50%;">
+
+<p>回退版本二：<br><img src="/2024/08/21/2024-os-lab0/img/Thinking%200.4-2.png" style="zoom:50%;"></p>
+<p>通过hashcode回到版本三：<br><img src="/2024/08/21/2024-os-lab0/img/Thinking%200.4-3.png" style="zoom:50%;"></p>
 <p><strong>!!值得注意的是：git reset –hard会将工作区、暂存区和当前分支都重置到指定的提交状态，因此会更改工作区的内容。如果有未提交的更改，这些更改会被丢弃。</strong></p>
 <h3 id="Thinking-0-5"><a href="#Thinking-0-5" class="headerlink" title="Thinking 0.5"></a>Thinking 0.5</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> first
 <span class="token builtin class-name">echo</span> second <span class="token operator">&gt;</span> output.txt
@@ -429,9 +433,8 @@
 
 <p><code>&gt;</code> :重定向命令的标准输出到文件(覆盖原文件)</p>
 <p><code>&gt;&gt;</code> :命令的输出追加到指定文件</p>
-<h3 id="Thinking-0-6"><a href="#Thinking-0-6" class="headerlink" title="Thinking 0.6"></a>Thinking 0.6</h3><p>command文件内容：<br><img src="/2024-OS-lab0/img/Thinking%200.6-1.png"></p>
-<p>result文件内容：</p>
-<p><img src="/2024-OS-lab0/img/Thinking%200.6-2.png"></p>
+<h3 id="Thinking-0-6"><a href="#Thinking-0-6" class="headerlink" title="Thinking 0.6"></a>Thinking 0.6</h3><p>command文件内容：<br><img src="/2024/08/21/2024-os-lab0/img/Thinking%200.6-1.png" style="zoom:50%;"></p>
+<p>result文件内容：<br><img src="/2024/08/21/2024-os-lab0/img/Thinking%200.6-2.png" style="zoom:80%;"></p>
 <p>解释说明:（可以从test文件的内容入手）<br>test给a赋值为1，给b赋值为2，给c赋值为a+b，即c的值为3；之后将c、b、a的值依次重定向输入到file1、file2、file3；接着把file1、file2、file3追加到file4；最后将file4的结果输出到result中。</p>
 <ul>
 <li><p>echo echo Shell Start 与 echo ‘echo Shell Start’ 效果是否有区别：没有区别</p>
@@ -647,7 +650,7 @@ HELLO WORLD<span aria-hidden="true" class="line-numbers-rows"><span></span><span
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            lab0思考题
                         
                     </div>
                     <div class="publish-info">
