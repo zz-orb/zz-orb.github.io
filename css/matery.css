@@ -34,8 +34,10 @@
 }
 
 body {
-    background-color: #eaeaea;
+    /* background-color: #eaeaea; */
     margin: 0;
+    background: linear-gradient(60deg, rgba(255, 255, 255, 0.35) 5%, rgba(255, 255, 255, 0.35)) 0% 0% / cover, url("https://w.wallhaven.cc/full/49/wallhaven-49rk91.jpg") 0px 0px;
+    background-attachment: fixed;
     color: #34495e;
     overflow-x: hidden;
     overflow-y: auto;
@@ -1023,8 +1025,8 @@ article .article-tags .chip {
 
 #artDetail .card {
     box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15),
-    0 5px 15px rgba(0, 0, 0, .07),
-    0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+        0 5px 15px rgba(0, 0, 0, .07),
+        0 2px 5px -5px rgba(0, 0, 0, .1) !important;
 }
 
 #artDetail .tag-cate {
@@ -2027,8 +2029,7 @@ footer .copy-right {
 
 /*二级菜单*/
 
-.nav-menu {
-}
+.nav-menu {}
 
 .nav-menu li .sub-nav {
     position: absolute;
@@ -2124,13 +2125,13 @@ footer .copy-right {
 }
 
 .m-nav-show,
-.m-nav-item > a:hover {
+.m-nav-item>a:hover {
     color: #FFF;
     background: rgba(255, 255, 255, .8);
 }
 
-.m-nav-show > a:before,
-.m-nav-item > a:hover:before {
+.m-nav-show>a:before,
+.m-nav-item>a:hover:before {
     opacity: 1;
 }
 
