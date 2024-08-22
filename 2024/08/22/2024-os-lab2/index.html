@@ -35,6 +35,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -300,7 +310,7 @@
     }
 
     #toc-content .toc-link:hover {
-        color: #42b983;
+        color: #7A848D;
         font-weight: 700;
         text-decoration: underline;
     }
@@ -315,7 +325,7 @@
     }
 
     #toc-content .is-active-link {
-        color: #42b983;
+        color: #7A848D;
     }
 
     #floating-toc-btn {
@@ -385,11 +395,6 @@
                 
 
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
             </div>
         </div>
         <hr class="clearfix">
@@ -583,10 +588,8 @@ CLINT -----------------&gt;+---------------------------+-------0x0200 0000
 <h5 id="U-Mode用户地址空间布局"><a href="#U-Mode用户地址空间布局" class="headerlink" title="U-Mode用户地址空间布局"></a>U-Mode用户地址空间布局</h5><img src="/2024/08/22/2024-os-lab2/lab2-Umode.png" style="zoom:50%;">
 
 <h4 id="虚拟页式管理（Sv39内存布局）"><a href="#虚拟页式管理（Sv39内存布局）" class="headerlink" title="虚拟页式管理（Sv39内存布局）"></a>虚拟页式管理（Sv39内存布局）</h4><h5 id="39位有效VA"><a href="#39位有效VA" class="headerlink" title="39位有效VA"></a>39位有效VA</h5><p>根据SV-39的约定，对于一个64位的虚拟地址，只使用其低39位来进行地址转换，而高25位不做使用，未来Risc-V有可能用来定义更多的翻译级别。</p>
-<aside> 💡 因此该布局下最大的虚拟地址即为(1&lt;&lt;39)-1，也就是0x7f ffff ffff
-
-<h5 id="三级页表机制"><a href="#三级页表机制" class="headerlink" title="三级页表机制"></a>三级页表机制</h5><p>Sv39为页式的内存管理，每一页的大小为4kb，即4096bytes。采用三级页表来完成虚拟地址到物理地址的映射。</p>
-<h5 id="satp寄存器"><a href="#satp寄存器" class="headerlink" title="satp寄存器"></a>satp寄存器</h5><p>satp(Supervisor Address Translation and Protection)寄存器是Risc-V架构下的一个特权寄存器，用来告知cpu根页表的地址，其具体布局如下</p>
+<aside> 💡 因此该布局下最大的虚拟地址即为(1&lt;&lt;39)-1，也就是0x7f ffff <h5 id="三级页表机制"><a href="#三级页表机制" class="headerlink" title="三级页表机制"></a>三级页表机制<p>Sv39为页式的内存管理，每一页的大小为4kb，即4096bytes。采用三级页表来完成虚拟地址到物理地址的映射。</p>
+</h5><h5 id="satp寄存器"><a href="#satp寄存器" class="headerlink" title="satp寄存器"></a>satp寄存器</h5><p>satp(Supervisor Address Translation and Protection)寄存器是Risc-V架构下的一个特权寄存器，用来告知cpu根页表的地址，其具体布局如下</p>
 <table>
 <thead>
 <tr>
@@ -788,7 +791,7 @@ Pte <span class="token operator">*</span>pte<span class="token punctuation">;</s
 <li><a target="_blank" rel="noopener" href="https://yanna-zy.gitee.io/2023/04/10/BUAA-OS-2/#post-comment">https://yanna-zy.gitee.io/2023/04/10/BUAA-OS-2/#post-comment</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/626899526">RISC-V Sv39 虚拟内存总结 - 知乎 (zhihu.com)</a></li>
 </ol>
-</aside>
+<!--39)-1，也就是0x7f--></aside>
                 
             </div>
             <hr/>
